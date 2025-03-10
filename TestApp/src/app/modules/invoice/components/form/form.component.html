@@ -1,0 +1,239 @@
+<div style="width: 100%; padding: 10px;" @blurFocusAnimation>
+    <div nz-row [nzGutter]="[4,4]" style="width: 100%;">
+        <div nz-col nzSpan="24" style="text-align: right;">
+            <button (click)="back()" style="background-color: #ff6961; border: none; border-radius: 20px; margin: 2px;"
+                nz-button class="login-form-button login-form-margin" [nzType]="'primary'">
+                <nz-icon nzType="close"></nz-icon>
+                Cancelar
+            </button>
+            <button (click)="save()" style="background-color: #77dd77; border: none; border-radius: 20px; margin: 2px;"
+                nz-button class="login-form-button login-form-margin" [nzType]="'primary'">
+                <nz-icon nzType="save"></nz-icon>
+                Guardar
+            </button>
+        </div>
+        <div nz-col nzSpan="24" style="text-align: right;">
+            <div nz-row [nzGutter]="[4,4]" style="width: 100%;">
+                <div nz-col nzMd="12" nzXs="24">
+                    <div style="width: 100%; text-align: center; padding: 10px;">
+                        <span style="font-weight: 600; font-size: 20px;">Datos Basicos</span>
+                    </div>
+                    <div style="width: 100%; text-align: right;">
+                        <span> <span style="font-weight: 500;">Fecha:</span> {{currentDate | date:'MMM d, y'}}</span>
+                    </div>
+                    <div nz-row style="width: 100%;">
+                        @if(customerSelect == null){
+                        <div style="width: 100%;padding: 10px; text-align: center;">
+                            <div (click)="drawerCustomer=true;" class="select-customer">
+                                <nz-icon style="font-size: 40px;" nzType="plus" />
+                                <span>Seleccionar cliente</span>
+                            </div>
+                        </div>
+                        }@else{
+                        <div style="width: 100%;padding: 10px; text-align: center;">
+                            <div class="select-customer">
+                                <div style="width: 100%; text-align: right;">
+                                    <button (click)="drawerCustomer = true;" nz-tooltip="Cambiar cliente" nz-button
+                                        nzShape="circle">
+                                        <nz-icon nzType="swap" nzTheme="outline" />
+                                    </button>
+                                </div>
+                                <div nz-row [nzGutter]="[4,4]">
+                                    <div nz-col nzSpan="4">
+                                        <img style="width: 100%; object-fit: contain;" src="assets/user.png" alt="">
+                                    </div>
+                                    <div nz-col nzSpan="20">
+                                        <div class="container-name">
+                                            <span>{{customerSelect.c_name | uppercase}}</span>
+                                        </div>
+                                        <div class="container-ruc">
+                                            <span>{{customerSelect.c_ruc}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        }
+                        <nz-divider style="width: 100%;"></nz-divider>
+                        <div nz-col nzSpan="24">
+                            <div class="select-customer" style="border: none;">
+                                <span style="font-size: 20px; font-weight: 600;">TOTAL</span>
+                                <span style="font-size: 40px;">
+                                    <span>{{totalGeneral | currency}}</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div nz-col nzMd="12" nzXs="24">
+                    <div style="width: 100%; text-align: center; padding: 10px;">
+                        <span style="font-weight: 600; font-size: 20px;">Productos</span>
+                    </div>
+                    <div nz-row style="width: 100%;">
+                        <div nz-col class="gutter-row" nzSpan="24" style="text-align: center;">
+                            <button (click)="drawerProduct=true;"
+                                style="background-color: #84b6f4; border: none; border-radius: 20px; margin: 10px;"
+                                nz-button class="login-form-button login-form-margin" [nzType]="'primary'">
+                                <nz-icon nzType="save"></nz-icon>
+                                Agregar Producto
+                            </button>
+                        </div>
+                    </div>
+                    <nz-table style="width: 100%;" #basicTable [nzData]="listItems">
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Precio</th>
+                                <th>Cantidad</th>
+                                <th>Iva</th>
+                                <th>SubTotal</th>
+                                <th>Total</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for(item of listItems; track item){
+                            <tr>
+                                <td>{{item.product_name}}</td>
+                                <td>{{item.ii_price | currency}}</td>
+                                <td>{{item.ii_quantity}}</td>
+                                <td>{{item.ii_iva}}</td>
+                                <td>{{item.ii_subtotal | currency}}</td>
+                                <td>{{item.ii_total | currency}}</td>
+                                <td>
+                                    <button (click)="editItem(item)" nz-button nzShape="circle">
+                                        <nz-icon nzType="edit" nzTheme="outline" />
+                                    </button>
+                                    <nz-divider nzType="vertical"></nz-divider>
+                                    <button (click)="deleteItem(item)" nz-tooltip="Eliminar factura" nz-button
+                                        nzShape="circle">
+                                        <nz-icon nzType="delete" nzTheme="outline" />
+                                    </button>
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </nz-table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<nz-drawer [nzVisible]="drawerCustomer" nzPlacement="right" nzTitle="Clientes" (nzOnClose)="closeCustomers()">
+    <ng-container *nzDrawerContent>
+        <div nz-row [nzGutter]="[4,4]">
+            <div nz-col class="gutter-row" nzSpan="24">
+                <span>Clientes:</span>
+            </div>
+            <div nz-col class="gutter-row" nzSpan="24">
+                <input style="width: 100%; border-radius: 5px;" nz-input placeholder="Ingrese la cedula del cliente"
+                    [(ngModel)]="customerSearch" (keydown.enter)="searchCustomer()" />
+            </div>
+            <div nz-col class="gutter-row" nzSpan="24">
+                <div nz-row [nzGutter]="[4,4]">
+                    @if(listCustomersFilter.length>=1){
+                    <div nz-col class="gutter-row" nzSpan="24">
+                        <span>Coincidencias: </span>
+                    </div>
+                    @for(customer of listCustomersFilter; track customer){
+                    <div nz-col class="gutter-row" nzSpan="24">
+                        <div (click)="selectCustomer(customer)" class="card-customer">
+                            <div nz-row [nzGutter]="[4,4]">
+                                <div nz-col nzSpan="4">
+                                    <img style="width: 100%; object-fit: contain;" src="assets/user.png" alt="">
+                                </div>
+                                <div nz-col nzSpan="20">
+                                    <div class="container-name">
+                                        <span>{{customer.c_name | uppercase}}</span>
+                                    </div>
+                                    <div class="container-ruc">
+                                        <span>{{customer.c_ruc}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                    }@else{
+                    <nz-empty style="margin-top: 20px; text-align: center; width: 100%;">Lista vacía</nz-empty>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</nz-drawer>
+
+<nz-drawer [nzVisible]="drawerProduct" nzPlacement="right" nzTitle="Productos" (nzOnClose)="closeProducts()">
+    <ng-container *nzDrawerContent>
+        <div nz-row [nzGutter]="[4,4]">
+            <div nz-col class="gutter-row" nzSpan="24">
+                <span>Productos:</span>
+            </div>
+            <div nz-col class="gutter-row" nzSpan="24">
+                <input style="width: 100%; border-radius: 5px;" nz-input
+                    placeholder="Ingrese serial  o descripción del producto" [(ngModel)]="productSearch"
+                    (keydown.enter)="searchProduct()" />
+            </div>
+            <div nz-col class="gutter-row" nzSpan="24">
+                <div nz-row [nzGutter]="[16,16]" style="text-align: center; width: 100%;">
+                    @if(listProductsFilter.length>=1){
+                    <div nz-col class="gutter-row" nzSpan="24">
+                        <span>Coincidencias: </span>
+                    </div>
+                    @for(product of listProductsFilter;track product){
+                    <div nz-col class="gutter-row" nzSpan="24">
+                        <div (click)="addItemToList(product)" class="card-customer">
+                            <div nz-row [nzGutter]="[4,4]">
+                                <div nz-col nzSpan="4">
+                                    <img style="width: 100%; object-fit: contain;" src="assets/box.png" alt="">
+                                </div>
+                                <div nz-col nzSpan="20">
+                                    <div class="container-name">
+                                        <span>{{product.p_description | uppercase}}</span>
+                                    </div>
+                                    <div class="container-ruc">
+                                        Stock: <span>{{product.p_stock}}</span>
+                                    </div>
+                                    <div class="container-ruc">
+                                        Precio: <span>{{product.p_price | currency}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                    }@else{
+                    <nz-empty style="margin-top: 20px; text-align: center; width: 100%;">Lista vacía</nz-empty>
+                    }
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</nz-drawer>
+
+<nz-modal [(nzVisible)]="modalItem" nzTitle="Modificar valor" (nzOnOk)="updateItem()">
+    <ng-container *nzModalContent>
+        @if(itemUpdate!=null){
+        <nz-row [nzGutter]="[8,8]" style="width: 100%;">
+            <nz-col nzSpan="12" class="gutter-row">
+                <span>Producto: {{itemUpdate.product_name | uppercase}}</span>
+            </nz-col>
+            <nz-col nzSpan="12" class="gutter-row">
+                <span>Precio: {{itemUpdate.ii_price | currency}}</span>
+            </nz-col>
+            <nz-col nzSpan="12" class="gutter-row">
+                <span>IVA: </span>
+                <input style="width: 100%; border-radius: 5px; margin-top: 10px;" nz-input
+                    placeholder="Ingrese cantidad" type="number" [(ngModel)]="itemUpdate.ii_iva" />
+            </nz-col>
+            <nz-col nzSpan="12" class="gutter-row">
+                <span>Cantidad: </span>
+                <input style="width: 100%; border-radius: 5px; margin-top: 10px;" nz-input
+                    placeholder="Ingrese cantidad" type="number" [(ngModel)]="itemUpdate.ii_quantity" />
+            </nz-col>
+        </nz-row>
+        }
+    </ng-container>
+</nz-modal>

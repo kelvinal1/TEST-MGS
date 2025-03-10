@@ -1,0 +1,610 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "API TEST APP v1.0",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/Customer/add-customer": {
+      "post": {
+        "tags": [
+          "Customer"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TestAppBack.Models.CustomerModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TestAppBack.Models.CustomerModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TestAppBack.Models.CustomerModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Customer/save-customer": {
+      "post": {
+        "tags": [
+          "Customer"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TestAppBack.Models.CustomerModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TestAppBack.Models.CustomerModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TestAppBack.Models.CustomerModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Customer/update-customer": {
+      "put": {
+        "tags": [
+          "Customer"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TestAppBack.Models.CustomerModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TestAppBack.Models.CustomerModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TestAppBack.Models.CustomerModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Customer/change-status-customer": {
+      "put": {
+        "tags": [
+          "Customer"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TestAppBack.Models.CustomerModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TestAppBack.Models.CustomerModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TestAppBack.Models.CustomerModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Customer/get-customers": {
+      "get": {
+        "tags": [
+          "Customer"
+        ],
+        "parameters": [
+          {
+            "name": "ruc",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Customer/get-customer-by-id": {
+      "get": {
+        "tags": [
+          "Customer"
+        ],
+        "parameters": [
+          {
+            "name": "idCustomer",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/InvoiceGeneral/save-invoice": {
+      "post": {
+        "tags": [
+          "InvoiceGeneral"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TestAppBack.Models.DTO.InvoiceGeneralDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TestAppBack.Models.DTO.InvoiceGeneralDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TestAppBack.Models.DTO.InvoiceGeneralDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/InvoiceGeneral/get-all-invoices": {
+      "get": {
+        "tags": [
+          "InvoiceGeneral"
+        ],
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/InvoiceGeneral/change-status-invoice": {
+      "put": {
+        "tags": [
+          "InvoiceGeneral"
+        ],
+        "parameters": [
+          {
+            "name": "idInvoice",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/InvoiceGeneral/change-status-item-invoice": {
+      "put": {
+        "tags": [
+          "InvoiceGeneral"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TestAppBack.Models.InvoiceItemModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TestAppBack.Models.InvoiceItemModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TestAppBack.Models.InvoiceItemModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Product/save-product": {
+      "post": {
+        "tags": [
+          "Product"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TestAppBack.Repositories.ProductModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TestAppBack.Repositories.ProductModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TestAppBack.Repositories.ProductModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Product/change-status-product": {
+      "put": {
+        "tags": [
+          "Product"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TestAppBack.Repositories.ProductModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TestAppBack.Repositories.ProductModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TestAppBack.Repositories.ProductModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Product/get-products": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "parameters": [
+          {
+            "name": "description",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "idProduct",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/WeatherForecast": {
+      "get": {
+        "tags": [
+          "WeatherForecast"
+        ],
+        "operationId": "GetWeatherForecast",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TestAppBack.WeatherForecast"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TestAppBack.WeatherForecast"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TestAppBack.WeatherForecast"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "TestAppBack.Models.CustomerModel": {
+        "type": "object",
+        "properties": {
+          "c_id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "c_name": {
+            "type": "string",
+            "nullable": true
+          },
+          "c_ruc": {
+            "type": "string",
+            "nullable": true
+          },
+          "c_state": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TestAppBack.Models.DTO.InvoiceGeneralDTO": {
+        "type": "object",
+        "properties": {
+          "invoice": {
+            "$ref": "#/components/schemas/TestAppBack.Models.InvoiceModel"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TestAppBack.Models.InvoiceItemModel"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TestAppBack.Models.InvoiceItemModel": {
+        "type": "object",
+        "properties": {
+          "ii_id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "ii_invoice": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "ii_product": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "ii_price": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "ii_quantity": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "ii_iva": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "ii_subtotal": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "ii_total": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "ii_state": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "product_name": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TestAppBack.Models.InvoiceModel": {
+        "type": "object",
+        "properties": {
+          "i_id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "i_date": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "i_customer": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "i_state": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "i_code": {
+            "type": "string",
+            "nullable": true
+          },
+          "i_total": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "customer_name": {
+            "type": "string",
+            "nullable": true
+          },
+          "customer_ruc": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TestAppBack.Repositories.ProductModel": {
+        "type": "object",
+        "properties": {
+          "p_id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "p_description": {
+            "type": "string",
+            "nullable": true
+          },
+          "p_bar_code": {
+            "type": "string",
+            "nullable": true
+          },
+          "p_price": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "p_stock": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "p_state": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TestAppBack.WeatherForecast": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "temperatureC": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "temperatureF": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "summary": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

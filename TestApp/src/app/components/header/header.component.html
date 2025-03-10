@@ -1,0 +1,22 @@
+<div class="container-header">
+    <nz-page-header nzBackIcon [nzGhost]="false" style="background-color: transparent;">
+        <nz-page-header-title style="color: white;">PRUEBA </nz-page-header-title>
+        <nz-page-header-subtitle style="color: white;">Gestión de pedidos</nz-page-header-subtitle>
+        <nz-page-header-extra>
+            <nz-space>
+                <button (click)="goOrders()" *nzSpaceItem nz-button class="button-min"
+                    style="background-color: #ff6961;">
+                    <nz-icon nzType="menu"></nz-icon>
+                    Pedidos</button>
+                <button (click)="goCustomers()" *nzSpaceItem nz-button class="button-min"
+                    style="background-color: #84b6f4;">
+                    <nz-icon nzType="usergroup-add" nzTheme="outline" />
+                    Clientes</button>
+                <button (click)="goProducts()" *nzSpaceItem nz-button class="button-min"
+                    style="background-color: #FFA07A;">
+                    <nz-icon nzType="product" nzTheme="outline" />
+                    Productos</button>
+            </nz-space>
+        </nz-page-header-extra>
+    </nz-page-header>
+</div>

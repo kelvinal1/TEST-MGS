@@ -1,0 +1,30 @@
+<div style="width: 100%; padding: 10px;" @blurFocusAnimation>
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="save()">
+        <div nz-col nzSpan="24" style="text-align: center; ">
+            <div style="width: 100%;;height: 250px; display: flex; justify-content: center; padding: 10px;">
+                <img style="height: 100%; object-fit: contain;" src="assets/user.png" alt="">
+            </div>
+        </div>
+        <nz-form-item>
+            <nz-form-control nzErrorTip="Por favor ingrese nombre de cliente">
+                <nz-input-group nzPrefixIcon="user">
+                    <input formControlName="c_name" nz-input placeholder="Escribir nombre de cliente" />
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-control nzErrorTip="Por favor ingrese ruc de cliente">
+                <nz-input-group nzPrefixIcon="idcard">
+                    <input formControlName="c_ruc" nz-input placeholder="Escribir ruc de cliente" />
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+        <div nz-col nzSpan="24" style="text-align: center;">
+            <button style="background-color: #77dd77; border: none; border-radius: 20px;" nz-button
+                class="login-form-button login-form-margin" [nzType]="'primary'">
+                <nz-icon nzType="save"></nz-icon>
+                Guardar
+            </button>
+        </div>
+    </form>
+</div>

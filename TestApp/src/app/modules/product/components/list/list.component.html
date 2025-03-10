@@ -1,0 +1,35 @@
+<div style="width: 100%; padding: 10px;" @blurFocusAnimation>
+    <div nz-row [nzGutter]="[4,4]" style="width: 100%;">
+        <div nz-col nzMd="6" nzXs="12">
+            <div class="card-customer" (click)="addProduct()">
+                <div class="container-create">
+                    <nz-icon style="font-size: 70px;" nzType="plus"></nz-icon>
+                    <span style="font-size: 18px;;">Agregar producto </span>
+                </div>
+            </div>
+        </div>
+        @for (item of listProducts; track item) {
+        <div nz-col nzMd="6" nzXs="12">
+            <div class="card-customer">
+                <div class="container-options">
+                </div>
+                <div class="container-image" style="height: 250px; display: flex; justify-content: center;">
+                    <img style="height: 100%; object-fit: contain;" src="assets/box.png" alt="">
+                </div>
+                <div class="container-name">
+                    <span>{{item.p_description | uppercase }}</span>
+                </div>
+                <div class="container-ruc">
+                    <span>{{item.p_bar_code}}</span>
+                </div>
+                <div class="container-ruc">
+                    <span>$ {{item.p_price}}</span>
+                </div>
+                <div class="container-ruc">
+                    <span>Stock: {{item.p_stock}}</span>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>

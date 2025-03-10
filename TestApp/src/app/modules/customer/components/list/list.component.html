@@ -1,0 +1,29 @@
+<div style="width: 100%; padding: 10px;" @blurFocusAnimation>
+    <div nz-row [nzGutter]="[4,4]" style="width: 100%;">
+        <div nz-col nzMd="6" nzXs="12">
+            <div class="card-customer" (click)="addCustomer()">
+                <div class="container-create">
+                    <nz-icon style="font-size: 70px;" nzType="plus"></nz-icon>
+                    <span style="font-size: 18px;;">Agregar cliente </span>
+                </div>
+            </div>
+        </div>
+        @for (item of listCustomers; track item) {
+        <div nz-col nzMd="6" nzXs="12">
+            <div class="card-customer">
+                <div class="container-options">
+                </div>
+                <div class="container-image" style="height: 250px; display: flex; justify-content: center;">
+                    <img style="height: 100%; object-fit: contain;" src="assets/user.png" alt="">
+                </div>
+                <div class="container-name">
+                    <span>{{item.c_name}}</span>
+                </div>
+                <div class="container-ruc">
+                    <span>{{item.c_ruc}}</span>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>

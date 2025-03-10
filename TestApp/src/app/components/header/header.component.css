@@ -1,0 +1,21 @@
+.container-header {
+    width: 100%;
+    height: auto;
+    background-color: rgb(0, 0, 0, 0.8);
+}
+
+
+::ng-deep.ant-page-header-back-button {
+    display: inline-block;
+    padding: 0;
+    line-height: inherit;
+    background: transparent;
+    border: 0;
+    color: white;
+}
+
+.button-min {
+    border: none;
+    color: white;
+    border-radius: 20px;
+}

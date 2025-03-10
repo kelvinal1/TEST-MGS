@@ -1,0 +1,89 @@
+<div style="width: 100%; padding: 10px;" @blurFocusAnimation>
+    <div nz-row [nzGutter]="[4,4]" style="width: 100%;">
+        <div nz-col class="gutter-row" nzSpan="24"
+            style="display: flex; justify-content: space-between; place-items: center;">
+            <span>Facturas registradas: </span>
+            <div style="display: flex;">
+                <button (click)="addInvoice()" style="margin: 2px; border: none; background-color: #77dd77;" nz-button
+                    nzType="primary" nzShape="circle">
+                    <nz-icon nzType="plus" />
+                </button>
+                <button style="margin: 2px; border: none;  background-color: #b186f1;" nz-button nzType="primary"
+                    nzShape="circle">
+                    <nz-icon nzType="filter" />
+                </button>
+            </div>
+        </div>
+        <div nz-col class="gutter-row" nzSpan="24">
+            <nz-table style="width: 100%;" #basicTable [nzData]="listInvoices">
+                <thead>
+                    <tr>
+                        <th>ID FACTURA</th>
+                        <th>CLIENTE</th>
+                        <th>FECHA</th>
+                        <th>TOTAL</th>
+                        <th style="text-align: center;">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (item of listInvoices; track item){
+                    <tr>
+                        <td>{{item.invoice!.i_code}}</td>
+                        <td>{{item.invoice!.customer_name | uppercase}}</td>
+                        <td>{{item.invoice!.i_date | date:'MMM d, y, h:mm:ss a' }}</td>
+                        <td>{{item.invoice!.i_total| currency}}</td>
+                        <td style="text-align: center;">
+                            <button (click)="viewDetails(item)" nz-tooltip="Ver detalle de factura" nz-button
+                                nzShape="circle">
+                                <nz-icon nzType="eye" nzTheme="outline" />
+                            </button>
+                            <nz-divider nzType="vertical"></nz-divider>
+                            <button (click)="editItem(item.invoice!)" nz-tooltip="Editar factura" nz-button
+                                nzShape="circle">
+                                <nz-icon nzType="edit" nzTheme="outline" />
+                            </button>
+                            <nz-divider nzType="vertical"></nz-divider>
+                            <button (click)="deleteInvoice(item.invoice!)" nz-tooltip="Eliminar factura" nz-button
+                                nzShape="circle">
+                                <nz-icon nzType="delete" nzTheme="outline" />
+                            </button>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </nz-table>
+
+        </div>
+    </div>
+</div>
+
+
+<nz-drawer [nzVisible]="drawerDetails" nzPlacement="right" nzTitle="Detalles de factura" (nzOnClose)="closeDetails()"
+    [nzWidth]="'800px'">
+    <ng-container *nzDrawerContent>
+        @if(invoiceSelect!=null){
+        <nz-table style="width: 100%;" #basicTable [nzData]="listInvoices">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Iva</th>
+                    <th>SubTotal</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (item of invoiceSelect!.items; track item){
+                <tr>
+                    <td>{{item.product_name | uppercase}}</td>
+                    <td>{{item.ii_quantity}}</td>
+                    <td>{{item.ii_iva}}</td>
+                    <td>{{item.ii_subtotal | currency}}</td>
+                    <td>{{item.ii_total | currency}}</td>
+                </tr>
+                }
+            </tbody>
+        </nz-table>
+        }
+    </ng-container>
+</nz-drawer>
